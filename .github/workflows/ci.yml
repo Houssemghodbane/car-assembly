@@ -35,7 +35,7 @@ jobs:
 
       - name: Test the car
         run: |
-          test -f build/car.txt
-          grep "chassis" build/car.txt
+          test -f car-build/build/car.txt
+          grep "chassis" car-build/build/car.txt
           echo "✅ Tests passed"
 
