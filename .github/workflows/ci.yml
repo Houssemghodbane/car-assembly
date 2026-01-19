@@ -5,9 +5,12 @@ on:
   pull_request:
 
 jobs:
-  test:
-    runs-on: ubuntu-latest
+  build_car:
+    runs-on: alpine
 
     steps:
-      - name: Run test script
-        run: echo "Hello!!"
+      - run : echo "Building the car"
+      - run : mkdir build
+      - run : cd build
+      - run : touch car.txt
+      - run : echo "chassis" > car.txt
