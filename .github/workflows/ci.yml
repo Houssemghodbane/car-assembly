@@ -10,12 +10,18 @@ jobs:
     container: alpine:latest
 
     steps:
-      - run : echo "Building the car" 
-      - run : mkdir build 
-      - run : cd build 
-      - run : touch car.txt 
-      - run : echo "chassis" > car.txt
-      - run : cat car.txt
+      - name: Build the car
+        run: |
+          echo "Building the car"
+          mkdir -p build
+          echo "chassis" > build/car.txt
+          cat build/car.txt
+
+      - name: Upload build artifact
+        uses: actions/upload-artifact@v4
+        with:
+          name: car-build
+          path: build/
   
   test_car:
     runs-on: ubuntu-latest
@@ -23,5 +29,13 @@ jobs:
     needs: build_car
 
     steps:
-      - run : test -f build/car.txt
-      - run : grep "chassis" car.txt
+      - name: Download build artifact
+        uses: actions/download-artifact@v4
+        with:
+          name: car-build
+
+      - name: Test the car
+        run: |
+          test -f build/car.txt
+          grep "chassis" build/car.txt
+          echo "✅ Tests passed"
