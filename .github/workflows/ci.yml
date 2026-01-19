@@ -10,4 +10,4 @@ jobs:
 
     steps:
       - name: Run test script
-        run: echo "Hello!"
+        run: echo "Hello!!"
