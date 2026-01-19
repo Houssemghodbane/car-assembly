@@ -10,11 +10,17 @@ jobs:
     container: alpine:latest
 
     steps:
-      - name: Build the car
-        run: |
-          echo "Building the car"
-          mkdir build
-          cd build
-          touch car.txt
-          echo "chassis" > car.txt
-          cat car.txt
+      - run : echo "Building the car" 
+      - run : mkdir build 
+      - run : cd build 
+      - run : touch car.txt 
+      - run : echo "chassis" > car.txt
+      - run : cat car.txt
+  
+  test_car:
+    runs-on: ubuntu-latest
+    container: alpine:latest
+
+    steps:
+      - run : test -f build/car.txt
+      - run : grep "chassis" car.txt
