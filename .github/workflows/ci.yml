@@ -31,6 +31,7 @@ jobs:
         uses: actions/download-artifact@v4
         with:
           name: car-build
+          path: .
 
       - name: Test the car
         run: |
