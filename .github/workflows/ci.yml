@@ -1,0 +1,13 @@
+name: Test Pipeline
+
+on:
+  push:
+  pull_request:
+
+jobs:
+  test:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Run test script
+        run: echo "Hello!"
