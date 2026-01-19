@@ -17,4 +17,4 @@ jobs:
           cd build
           touch car.txt
           echo "chassis" > car.txt
-          ls -l
+          cat car.txt
