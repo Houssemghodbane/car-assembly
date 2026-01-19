@@ -16,18 +16,18 @@ jobs:
           echo "chassis" > build/car.txt
           cat build/car.txt
 
-      - name: Upload build artifact
+      - name: Upload artifact
         uses: actions/upload-artifact@v4
         with:
           name: car-build
           path: build/
-  
+
   test_car:
     runs-on: ubuntu-latest
     needs: build_car
 
     steps:
-      - name: Download build artifact
+      - name: Download artifact
         uses: actions/download-artifact@v4
         with:
           name: car-build
@@ -37,3 +37,4 @@ jobs:
           test -f build/car.txt
           grep "chassis" build/car.txt
           echo "✅ Tests passed"
+
